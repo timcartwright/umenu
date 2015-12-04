@@ -1,0 +1,39 @@
+<!-- Button trigger modal -->
+<%= button_tag "Add Menu Item", class: "btn btn-primary pull-right", data: {toggle: "modal", target:"#addModal"} %>
+<h2>
+  <%= @restaurant.name %>
+</h2>
+<h4>
+  Menu
+</h4>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <ul>
+      <% @menuitems.each do |menuitem| %>
+        <%= menuitem.name %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Menu Item</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@restaurant, @menu_item] do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :price %>
+          <%= f.input :menucategory_id, label: "Category", collection: @menucategories, as: :radio_buttons, label_method: :name, value_method: :id %>
+          <%= f.button :submit, "Add Item" %>
+        <% end %>
+       
+      </div>
+    </div>
+  </div>
+</div>
