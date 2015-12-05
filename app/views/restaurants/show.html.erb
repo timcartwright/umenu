@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6">
     <%= button_tag "Add Menu Item", class: "btn btn-primary pull-right", data: {toggle: "modal", target:"#addModal"} %>
     <h2>
       <%= @restaurant.name %>
@@ -11,13 +11,26 @@
         <h3>
           <%= category.name %>
         </h3>
-        <% category.menuitems.each do |item| %>
-          <p>
-            <%= item.name %>
-          </p>
-        <% end %>
+        <table class="table">
+            <% category.menuitems.each do |item| %>
+            <tr>
+              <td>
+                <%= item.name %>
+              </td>
+              <td>
+                <%= item.price %>
+              </td>
+              <td>
+                <%= link_to "Add", order_items_path(item: item, restaurant: @restaurant), method: :post %>
+              </td>
+            </tr>
+            <% end %>
+        </table>
       <% end %>
     </div>
+  </div>
+  <div class="col-md-6">
+    
   </div>
 </div>
 

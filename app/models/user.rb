@@ -26,4 +26,31 @@ class User < ActiveRecord::Base
   has_many :orders, class_name: Order.name
   has_many :managementjobs, class_name: Manager.name, dependent: :destroy
   has_many :restaurants, through: :managementjobs, source: :restaurant
+
+  def current_order(restaurant)
+    order = self.orders.find_by(paid: nil, restaurant: restaurant)
+    if order.nil?
+      order = self.orders.new
+      order.paid = false
+      order.fulfilled = false
+      order.total_price = 0
+      order.restaurant = restaurant
+      order.save!
+    end
+
+    return order
+  end
+
+  def add_to_order(menuitem, restaurant)
+    order = current_order(restaurant)
+    order.total_price += menuitem.price
+    order.save!
+
+    orderitem = order.orderitems.new
+    orderitem.menu_item = menuitem
+    orderitem.price = menuitem.price
+    orderitem.quantity = 1
+    orderitem.save!
+  end
+
 end
