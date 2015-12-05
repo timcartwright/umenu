@@ -1,8 +1,21 @@
-<h2>
-  Restaurants
-</h2>
-<div class="row">
-  <div class="col-md-12">
-    <%= render @restaurants %>
+<%= content_for :body_class, 'home' %>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-10 col-md-offset-1">
+        <h1>umenu</h1>
+        <p>orders made easy</p>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+   
+      <%= render @restaurants %>
+    
   </div>
 </div>

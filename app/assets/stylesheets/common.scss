@@ -1,3 +1,35 @@
-.navbar {
+.navbar  {
     border-radius: 0;
+}
+
+.home {
+
+  .navbar-default {
+    background-color: transparent;
+    border: none;
+  }
+
+  .flash_messages {
+    display: none;
+  }
+}
+
+.jumbotron {
+  // position: relative;
+  margin-top: -82px;
+  background-image: url("barista.jpg");
+  background-repeat: none;
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 100vh;
+  padding-top: 96px;
+
+  h1 {
+    font-size: 112px;
+  }
+
+  p {
+    font-size: 40px;
+    line-height: 0.8;
+  }
 }

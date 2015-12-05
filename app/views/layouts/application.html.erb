@@ -6,15 +6,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= content_for :body_class %>">
 <%= render "common/header" %>
 <div class="container">
   <div class="flash_messages">
     <%= flash_tag(notice, "notice") %>
     <%= flash_tag(alert, "alert") %>
   </div>
-  <%= yield %>
 </div>
+
+  <%= yield %>
 
 </body>
 </html>

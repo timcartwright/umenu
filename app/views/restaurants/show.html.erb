@@ -1,51 +1,54 @@
 <!-- Button trigger modal -->
-<div class="row">
-  <div class="col-md-6">
-    <%= button_tag "Add Menu Item", class: "btn btn-primary pull-right", data: {toggle: "modal", target:"#addModal"} %>
-    <h2>
-      <%= @restaurant.name %>
-    </h2>
-    
-    <div>
-      <% @menucategories.each do |category| %>
-        <h3>
-          <%= category.name %>
-        </h3>
-        <table class="table">
-            <% category.menuitems.each do |item| %>
-            <tr>
-              <td><%= item.name %></td>
-              <td><%= item.price %></td>
-              <td>
-                <%= link_to "Add", order_items_path(item: item, restaurant: @restaurant), method: :post %>
-              </td>
-            </tr>
-            <% end %>
-        </table>
-      <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= button_tag "Add Menu Item", class: "btn btn-primary pull-right", data: {toggle: "modal", target:"#addModal"} %>
+      <h2>
+        <%= @restaurant.name %>
+      </h2>
+      
+      <div>
+        <% @menucategories.each do |category| %>
+          <h3>
+            <%= category.name %>
+          </h3>
+          <table class="table">
+              <% category.menuitems.each do |item| %>
+              <tr>
+                <td><%= item.name %></td>
+                <td><%= item.price %></td>
+                <td>
+                  <%= link_to "Add", order_items_path(item: item, restaurant: @restaurant), method: :post %>
+                </td>
+              </tr>
+              <% end %>
+          </table>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <div class="col-md-6">
-    <h2>Your Order</h2>
-    
-    <h4>
-      Order Total: <%= @order.total_price %>
-      <span class="pull-right"><%= render "stripe" %></span>
-    </h4>
-    <table class="table">
-        <tr>
-          <th>Item</th>
-          <th>Price</th>
-          <th>Quantity</th>
-        </tr>
-      <% @orderitems.each do |item| %>
-        <tr>
-          <td><%= item.menu_item.name %></td>
-          <td><%= item.price %></td>
-          <td><%= item.quantity %></td>
-        </tr>
-      <% end %>
-    </table>
+    <div class="col-md-6">
+      <h2>Your Order</h2>
+      
+      <h4>
+        Order Total: <%= @order.total_price %>
+        <span class="pull-right"><%= render "stripe" %></span>
+      </h4>
+      <table class="table">
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+        <% @orderitems.each do |item| %>
+          <tr>
+            <td><%= item.menu_item.name %></td>
+            <td><%= item.price %></td>
+            <td><%= item.quantity %></td>
+            <td><%= link_to "x", order_item_path(item), method: :delete, remote: true %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
 
