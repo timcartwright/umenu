@@ -9,6 +9,5 @@
 #
 
 class Restaurant < ActiveRecord::Base
-  has_many :menuitems, class_name: MenuItem.name
   has_many :menucategories, class_name: MenuCategory.name
 end

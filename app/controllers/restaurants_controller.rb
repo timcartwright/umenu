@@ -6,9 +6,11 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    @menuitems = @restaurant.menuitems
-    @menucategories = MenuCategory.all
+    @menucategories = @restaurant.menucategories.all
     @menu_item = MenuItem.new
   end
+
+private
+
   
 end

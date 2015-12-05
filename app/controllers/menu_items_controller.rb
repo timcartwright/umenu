@@ -2,9 +2,8 @@ class MenuItemsController < ApplicationController
 
   def create
     
-    menu_item = MenuItem.new(menu_item_params)
-    menu_item.restaurant_id = params[:restaurant_id]
-
+    menu_category = MenuCategory.find_by(id: params[:menu_item][:menucategory], restaurant_id: params[:restaurant_id])
+    menu_item = menu_category.menuitems.new(menu_item_params)
 
     if menu_item.save
       flash[:notice] = "Menu Item Created"
@@ -18,7 +17,7 @@ class MenuItemsController < ApplicationController
 
 private
   def menu_item_params
-    params.require(:menu_item).permit(:name, :description, :price, :menucategory_id)
+    params.require(:menu_item).permit(:name, :description, :price)
   end
 
 end
