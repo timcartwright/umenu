@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205063107) do
+ActiveRecord::Schema.define(version: 20151205100542) do
 
   create_table "menu_categories", force: :cascade do |t|
     t.string   "name"
@@ -32,6 +32,32 @@ ActiveRecord::Schema.define(version: 20151205063107) do
   end
 
   add_index "menu_items", ["menu_category_id"], name: "index_menu_items_on_menu_category_id"
+
+  create_table "order_items", force: :cascade do |t|
+    t.decimal  "price"
+    t.integer  "quantity"
+    t.string   "request"
+    t.integer  "order_id"
+    t.integer  "menu_item_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "order_items", ["menu_item_id"], name: "index_order_items_on_menu_item_id"
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal  "total_price"
+    t.datetime "paid"
+    t.datetime "fulfilled"
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"

@@ -10,4 +10,5 @@
 
 class Restaurant < ActiveRecord::Base
   has_many :menucategories, class_name: MenuCategory.name
+  has_many :orders, class_name: Order.name
 end
