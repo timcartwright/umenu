@@ -24,4 +24,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :orders, class_name: Order.name
+  has_many :restaurants, through: :managers, source: :restaurant
 end
