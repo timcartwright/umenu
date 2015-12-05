@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   end
   
   devise_for :users
-  root 'menu_items#index'
+  root 'restaurants#index'
 
 end
