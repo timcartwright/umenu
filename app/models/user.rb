@@ -46,11 +46,17 @@ class User < ActiveRecord::Base
     order.total_price += menuitem.price
     order.save!
 
-    orderitem = order.orderitems.new
-    orderitem.menu_item = menuitem
-    orderitem.price = menuitem.price
-    orderitem.quantity = 1
-    orderitem.save!
-  end
+    orderitem = order.orderitems.find_by(menu_item: menuitem)
+    if orderitem.nil?
+      orderitem = order.orderitems.new
+      orderitem.menu_item = menuitem
+      orderitem.price = menuitem.price
+      orderitem.quantity = 1
+    else
+      orderitem.quantity += 1
+    end
 
+    orderitem.save!
+
+  end
 end
