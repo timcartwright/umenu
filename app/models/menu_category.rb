@@ -12,4 +12,6 @@
 class MenuCategory < ActiveRecord::Base
   has_many :menuitems, class_name: MenuItem.name
   belongs_to :restaurant
+
+  validates :name, presence: true
 end
