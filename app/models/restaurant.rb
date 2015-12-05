@@ -11,7 +11,8 @@
 class Restaurant < ActiveRecord::Base
   has_many :menucategories, class_name: MenuCategory.name
   has_many :orders, class_name: Order.name
-  has_many :managers, through: :managers, source: :user
+  has_many :managerships, class_name: Manager.name, dependent: :destroy
+  has_many :managers, through: :managerships, source: :user
 
   validates :name, presence: true
 end

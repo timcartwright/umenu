@@ -24,5 +24,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :orders, class_name: Order.name
-  has_many :restaurants, through: :managers, source: :restaurant
+  has_many :managementjobs, class_name: Manager.name, dependent: :destroy
+  has_many :restaurants, through: :managementjobs, source: :restaurant
 end
