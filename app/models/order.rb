@@ -19,4 +19,10 @@ class Order < ActiveRecord::Base
 
   validates :total_price, presence: true,
                           numericality: true
+
+  def mark_as_paid
+    self.paid = Time.zone.now
+    self.save
+  end
+  
 end

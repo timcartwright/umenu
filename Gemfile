@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+group :development, :test do
+  gem 'dotenv-rails'
+  gem 'byebug'
+end
+
 gem 'rails', '4.2.5'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
@@ -16,10 +21,8 @@ gem 'devise_invitable'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'annotate'
+gem 'stripe'
 
-group :development, :test do
-  gem 'byebug'
-end
 
 group :development do
   gem 'web-console', '~> 2.0'
