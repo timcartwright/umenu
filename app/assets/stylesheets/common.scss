@@ -44,3 +44,17 @@
     }
   }
 }
+
+a {
+  &, &:hover, &:active, &:visited {
+    text-decoration: none;
+  }
+}
+
+.remove {
+  color: #d9534f;
+
+  &:hover, &:active {
+    color: #c9302c;
+  }
+}

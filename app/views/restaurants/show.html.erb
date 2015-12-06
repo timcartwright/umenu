@@ -46,7 +46,7 @@
                 <td><%= item.menu_item.name %></td>
                 <td class="text-center"><%= item.price %></td>
                 <td class="text-center"><%= item.quantity %></td>
-                <td class="text-center"><%= link_to '', order_item_path(item), class: "fa fa-minus-circle", method: :delete %></td>
+                <td class="text-center"><%= link_to '', order_item_path(item), class: "fa fa-minus-circle remove", method: :delete %></td>
               </tr>
             <% end %>
                 <tr>
