@@ -20,7 +20,7 @@
                 <td class="text-center"><%= "#{item.price}" %></td>
                 <% if current_user %>
                   <td class="text-center">
-                    <%= link_to '', order_items_path(item: item, restaurant: @restaurant) , class: "fa fa-plus-circle", method: :post %>
+                    <%= link_to '', order_items_path(item: item, restaurant: @restaurant), class: "fa fa-plus-circle", method: :post %>
                   </td>
                 <% end %>
               </tr>
@@ -32,20 +32,21 @@
     <% if current_user %>
       <div class="col-md-6">
         <div class="well">
-          <h2 class="text-center">Your Order</h2>
+          <h2>Your Order</h2>
           
           <table class="table">
               <tr>
                 <th>Item</th>
-                <th class="text-right">Rs</th>
-                <th class="text-right">Quantity</th>
+                <th class="text-center">Rs</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Remove</th>
               </tr>
             <% @orderitems.each do |item| %>
               <tr>
                 <td><%= item.menu_item.name %></td>
-                <td class="text-right"><%= item.price %></td>
-                <td class="text-right"><%= item.quantity %></td>
-                <td><%= link_to "x", order_item_path(item), method: :delete %></td>
+                <td class="text-center"><%= item.price %></td>
+                <td class="text-center"><%= item.quantity %></td>
+                <td class="text-center"><%= link_to '', order_item_path(item), class: "fa fa-minus-circle", method: :delete %></td>
               </tr>
             <% end %>
                 <tr>
