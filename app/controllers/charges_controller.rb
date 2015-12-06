@@ -20,7 +20,7 @@ class ChargesController < ApplicationController
     
     mark_order_as_paid(order_id)
 
-    flash[:notice] = 'Your Payment was Successful - Thank you!'
+    flash[:notice] = 'Yeah! Your order is on its way!'
 
     restaurant = params[:order][:restaurant_id]
 

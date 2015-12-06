@@ -32,30 +32,35 @@
     <% if current_user %>
       <div class="col-md-6">
         <div class="well">
-          <h2>Your Order</h2>
-          
-          <table class="table">
-              <tr>
-                <th>Item</th>
-                <th class="text-center">Rs</th>
-                <th class="text-center">Quantity</th>
-                <th class="text-center">Remove</th>
-              </tr>
-            <% @orderitems.each do |item| %>
-              <tr>
-                <td><%= item.menu_item.name %></td>
-                <td class="text-center"><%= item.price %></td>
-                <td class="text-center"><%= item.quantity %></td>
-                <td class="text-center"><%= link_to '', order_item_path(item), class: "fa fa-minus-circle remove", method: :delete, remote: true %></td>
-              </tr>
-            <% end %>
+          <% if @orderitems.any? %>
+            <h2>Your Order</h2>
+            
+            <table class="table">
                 <tr>
-                  <td><h4>Order Total</h4></td>
-                  <td class="text-right"><h4><%= "#{@order.total_price}" %></h4></td>
-                  <td></td>
-                  <td class="text-right"><%= render "stripe" %></td>
+                  <th>Item</th>
+                  <th class="text-center">Rs</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Remove</th>
                 </tr>
-          </table>
+              <% @orderitems.each do |item| %>
+                <tr>
+                  <td><%= item.menu_item.name %></td>
+                  <td class="text-center"><%= item.price %></td>
+                  <td class="text-center"><%= item.quantity %></td>
+                  <td class="text-center"><%= link_to '', order_item_path(item), class: "fa fa-minus-circle remove", method: :delete, remote: true %></td>
+                </tr>
+              <% end %>
+                  <tr>
+                    <td><h4>Order Total</h4></td>
+                    <td class="text-right"><h4><%= "#{@order.total_price}" %></h4></td>
+                    <td></td>
+                    <td class="text-right"><%= render "stripe" %></td>
+                  </tr>
+            </table>
+          <% else %>
+            <h2>Feeling hungry?</h2>
+            <p>Order some great food from our new menu!</p>
+          <% end %>
         </div>
       </div>
     <% else %>
