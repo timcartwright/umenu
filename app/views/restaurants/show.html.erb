@@ -1,62 +1,70 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
+      <div class="well">
       
       <h2>
         <%= @restaurant.name %>
       </h2>
       
-      <div>
+        <table class="table">
         <% @menucategories.each do |category| %>
-          <h3>
-            <%= category.name %>
-          </h3>
-          <table class="table">
+          <tr class="menu-category">
+            <th><h3><%= category.name %></h3></th>
+            <th class="text-center">Rs</th>
+            <th class="text-center">Order</th>
+          </tr>
               <% category.menuitems.each do |item| %>
               <tr>
                 <td><%= item.name %></td>
-                <td><%= item.price %></td>
+                <td class="text-center"><%= "#{item.price}" %></td>
                 <% if current_user %>
-                  <td>
-                    <%= link_to "Add", order_items_path(item: item, restaurant: @restaurant), method: :post %>
+                  <td class="text-center">
+                    <%= link_to '', order_items_path(item: item, restaurant: @restaurant) , class: "fa fa-plus-circle", method: :post %>
                   </td>
                 <% end %>
               </tr>
               <% end %>
-          </table>
         <% end %>
+        </table>
       </div>
     </div>
     <% if current_user %>
       <div class="col-md-6">
-        <h2 class="text-center">Your Order</h2>
-        
-        <h4>
-          Order Total: <%= @order.total_price %>
-          <span class="pull-right"><%= render "stripe" %></span>
-        </h4>
-        <table class="table">
-            <tr>
-              <th>Item</th>
-              <th>Price</th>
-              <th>Quantity</th>
-            </tr>
-          <% @orderitems.each do |item| %>
-            <tr>
-              <td><%= item.menu_item.name %></td>
-              <td><%= item.price %></td>
-              <td><%= item.quantity %></td>
-              <td><%= link_to "x", order_item_path(item), method: :delete %></td>
-            </tr>
-          <% end %>
-        </table>
+        <div class="well">
+          <h2 class="text-center">Your Order</h2>
+          
+          <table class="table">
+              <tr>
+                <th>Item</th>
+                <th class="text-right">Rs</th>
+                <th class="text-right">Quantity</th>
+              </tr>
+            <% @orderitems.each do |item| %>
+              <tr>
+                <td><%= item.menu_item.name %></td>
+                <td class="text-right"><%= item.price %></td>
+                <td class="text-right"><%= item.quantity %></td>
+                <td><%= link_to "x", order_item_path(item), method: :delete %></td>
+              </tr>
+            <% end %>
+                <tr>
+                  <td><h4>Order Total</h4></td>
+                  <td class="text-right"><h4><%= "#{@order.total_price}" %></h4></td>
+                  <td class="text-right"><%= render "stripe" %></td>
+                  <td></td>
+                </tr>
+          </table>
+        </div>
       </div>
     <% else %>
       <div class="col-md-6 text-center">
-        <h2>Your Order</h2>
-        <p>
-          <%= link_to "Sign In To Order", new_user_session_path, class: "btn btn-primary btn-lge" %>
-        </p>
+        <div class="well">
+          <h2>Your Order</h2>
+          <p>
+            <%= link_to "Sign In To Order", new_user_session_path, class: "btn btn-primary btn-lge" %>
+          </p>
+        </div>
       </div>
     <% end %>
   </div>
