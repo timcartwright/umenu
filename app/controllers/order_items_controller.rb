@@ -7,6 +7,7 @@ class OrderItemsController < ApplicationController
     restaurant = Restaurant.find(params[:restaurant])
     @order_item = current_user.add_to_order(item, restaurant)
     @total_price = @order_item.order.total_price
+    @quantity = @order_item.quantity
   end
 
   def destroy

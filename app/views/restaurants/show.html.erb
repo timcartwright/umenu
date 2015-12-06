@@ -35,7 +35,13 @@
           <% if @orderitems.any? %>
             <h2>Your Order</h2>
             
-            <table class="table">
+            <table id="live-order" class="table">
+                <tr>
+                  <td><h4>Order Total</h4></td>
+                  <%= render 'order_items/order_total' %>
+                  <td></td>
+                  <td class="text-right"><%= render "stripe" %></td>
+                </tr>
                 <tr>
                   <th>Item</th>
                   <th class="text-center">Rs</th>
@@ -44,12 +50,6 @@
                 </tr>
                 <%= render @orderitems %>
                 
-                <tr>
-                  <td><h4>Order Total</h4></td>
-                  <%= render 'order_items/order_total' %>
-                  <td></td>
-                  <td class="text-right"><%= render "stripe" %></td>
-                </tr>
             </table>
           <% else %>
             <h2>Feeling hungry?</h2>

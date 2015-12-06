@@ -1,6 +1,6 @@
 <tr id="<%= dom_id(order_item) %>">
   <td><%= order_item.menu_item.name %></td>
   <td class="text-center"><%= order_item.price %></td>
-  <td class="text-center"><%= order_item.quantity %></td>
+  <td id="quantity" class="text-center"><%= order_item.quantity %></td>
   <td class="text-center"><%= link_to '', order_item_path(order_item), class: "fa fa-minus-circle remove", method: :delete, remote: true %></td>
 </tr>
