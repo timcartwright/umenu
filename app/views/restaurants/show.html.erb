@@ -16,7 +16,10 @@
           </tr>
               <% category.menuitems.each do |item| %>
               <tr>
-                <td><%= item.name %></td>
+                <td>
+                  <%= item.name %>
+                  <p class="item-description"><%= item.description %></p>
+                </td>
                 <td class="text-center"><%= "#{item.price}" %></td>
                 <% if current_user %>
                   <td class="text-center">
@@ -33,27 +36,9 @@
       <div class="col-md-6">
         <div class="well">
           <% if @orderitems.any? %>
-            <h2>Your Order</h2>
-            
-            <table id="live-order" class="table">
-                <tr>
-                  <td><h4>Order Total</h4></td>
-                  <%= render 'order_items/order_total' %>
-                  <td></td>
-                  <td class="text-right"><%= render "stripe" %></td>
-                </tr>
-                <tr>
-                  <th>Item</th>
-                  <th class="text-center">Rs</th>
-                  <th class="text-center">Quantity</th>
-                  <th class="text-center">Remove</th>
-                </tr>
-                <%= render @orderitems %>
-                
-            </table>
+            <%= render 'order_items/order_form' %>
           <% else %>
-            <h2>Feeling hungry?</h2>
-            <p>Order some great food from our new menu!</p>
+            <%= render 'order_items/order_teaser' %>
           <% end %>
         </div>
       </div>

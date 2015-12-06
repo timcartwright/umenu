@@ -1,0 +1,19 @@
+<div id="order-form">
+  <h2>Your Order</h2>
+              
+  <table id="live-order" class="table">
+      <tr>
+        <td><h4>Order Total</h4></td>
+        <%= render 'order_items/order_total' %>
+        <td class="text-right"><%= render 'restaurants/stripe' %></td>
+      </tr>
+      <tr>
+        <th>Item</th>
+        <th class="text-center">Rs</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-center">Remove</th>
+      </tr>
+      <%= render @orderitems %>
+      
+  </table>
+</div>

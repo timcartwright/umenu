@@ -1,8 +1,7 @@
-if ($('#<%= dom_id(@order_item) %> #quantity').html() === '1') {
+<% if @quantity == 0 %>
   $('#<%= dom_id(@order_item) %>').remove();
-} else {
+<% else %>
   $('#<%= dom_id(@order_item) %>').replaceWith('<%= j render(@order_item) %>');
-}
+<% end %>
 
 $('#live-order-total').replaceWith('<%= j render('order_total') %>');
-
