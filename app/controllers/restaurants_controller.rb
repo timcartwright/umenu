@@ -14,6 +14,7 @@ class RestaurantsController < ApplicationController
     if current_user
       @order = current_user.current_order(@restaurant)
       @orderitems = @order.orderitems
+      @total_price = @order.total_price
     end
 
   end

@@ -42,20 +42,14 @@
                   <th class="text-center">Quantity</th>
                   <th class="text-center">Remove</th>
                 </tr>
-              <% @orderitems.each do |item| %>
+                <%= render @orderitems %>
+                
                 <tr>
-                  <td><%= item.menu_item.name %></td>
-                  <td class="text-center"><%= item.price %></td>
-                  <td class="text-center"><%= item.quantity %></td>
-                  <td class="text-center"><%= link_to '', order_item_path(item), class: "fa fa-minus-circle remove", method: :delete, remote: true %></td>
+                  <td><h4>Order Total</h4></td>
+                  <%= render 'order_items/order_total' %>
+                  <td></td>
+                  <td class="text-right"><%= render "stripe" %></td>
                 </tr>
-              <% end %>
-                  <tr>
-                    <td><h4>Order Total</h4></td>
-                    <td class="text-right"><h4><%= "#{@order.total_price}" %></h4></td>
-                    <td></td>
-                    <td class="text-right"><%= render "stripe" %></td>
-                  </tr>
             </table>
           <% else %>
             <h2>Feeling hungry?</h2>

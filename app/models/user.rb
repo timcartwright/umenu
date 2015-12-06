@@ -56,5 +56,7 @@ class User < ActiveRecord::Base
 
     orderitem.save!
 
+    return orderitem
+
   end
 end

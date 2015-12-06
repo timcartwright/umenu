@@ -5,8 +5,8 @@ class OrderItemsController < ApplicationController
   def create
     item = MenuItem.find(params[:item])
     restaurant = Restaurant.find(params[:restaurant])
-    current_user.add_to_order(item, restaurant)
-    redirect_to restaurant
+    @order_item = current_user.add_to_order(item, restaurant)
+    @total_price = @order_item.order.total_price
   end
 
   def destroy

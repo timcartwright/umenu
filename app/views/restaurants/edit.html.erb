@@ -10,7 +10,7 @@
       
       <div>
         <% @menucategories.each do |category| %>
-          <table class="table">
+          <table class="table table-condensed">
           <%= simple_form_for [@restaurant, category] do |f| %>
             <tr>
               <th>
