@@ -31,8 +31,6 @@ class User < ActiveRecord::Base
     order = self.orders.find_by(paid: nil, restaurant: restaurant)
     if order.nil?
       order = self.orders.new
-      order.paid = false
-      order.fulfilled = false
       order.total_price = 0
       order.restaurant = restaurant
       order.save!

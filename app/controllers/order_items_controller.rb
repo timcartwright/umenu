@@ -12,6 +12,9 @@ class OrderItemsController < ApplicationController
   def destroy
     
     item = OrderItem.find(params[:id])
+    amount = item.price * item.quantity
+    item.order.total_price -= amount
+    item.order.save
     item.destroy
 
     redirect_to request.referrer
