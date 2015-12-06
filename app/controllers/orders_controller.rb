@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @orders = @restaurant.orders
+    @orders = @restaurant.orders.where(fulfilled: nil)
   end
 
   def show
