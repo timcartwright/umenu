@@ -2,9 +2,11 @@ if ( $('#order-teaser').length ) {
   $('#order-teaser').replaceWith('<%= j render('order_items/order_form') %>');
 } else {
   <% if @quantity == 1 %>
-    $('#live-order').append('<%= j render(@order_item) %>');
+    // $('#live-order').append('<%= j render(@order_item) %>').show('slow');
+    $('<%= j render(@order_item) %>').hide().appendTo('#live-order').show(250);
   <% else %>
     $('#<%= dom_id(@order_item) %>').replaceWith('<%= j render(@order_item) %>');
+    $('#<%= dom_id(@order_item) %> #quantity').effect("highlight", {color: '#93C54B'}, 500);
   <% end %>
 };
 

@@ -11,8 +11,8 @@
         <% @menucategories.each do |category| %>
           <tr class="menu-category">
             <th><h3><%= category.name %></h3></th>
-            <th class="text-center">Rs</th>
-            <th class="text-center">Order</th>
+            <th class="text-center">Rs.</th>
+            <th class="text-center"></th>
           </tr>
               <% category.menuitems.each do |item| %>
               <tr>
@@ -34,13 +34,13 @@
     </div>
     <% if current_user %>
       <div class="col-md-6">
-        <div class="well">
+        
           <% if @orderitems.any? %>
             <%= render 'order_items/order_form' %>
           <% else %>
             <%= render 'order_items/order_teaser' %>
           <% end %>
-        </div>
+        
       </div>
     <% else %>
       <div class="col-md-6 text-center">

@@ -3,15 +3,15 @@
               
   <table id="live-order" class="table">
       <tr>
-        <td><h4>Order Total</h4></td>
+        <td class="wide-column"><h4>Order Total</h4></td>
         <%= render 'order_items/order_total' %>
         <td class="text-right"><%= render 'restaurants/stripe' %></td>
       </tr>
       <tr>
         <th>Item</th>
-        <th class="text-center">Rs</th>
-        <th class="text-center">Quantity</th>
-        <th class="text-center">Remove</th>
+        <th class="text-center slim-column">Rs.</th>
+        <th class="text-center slim-column">Qty</th>
+        <th class="text-center"></th>
       </tr>
       <%= render @orderitems %>
       

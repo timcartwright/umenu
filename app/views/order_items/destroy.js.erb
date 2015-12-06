@@ -1,7 +1,8 @@
 <% if @quantity == 0 %>
-  $('#<%= dom_id(@order_item) %>').remove();
+  $('#<%= dom_id(@order_item) %>').effect("fade", {}, 250);
 <% else %>
   $('#<%= dom_id(@order_item) %>').replaceWith('<%= j render(@order_item) %>');
+  $('#<%= dom_id(@order_item) %> #quantity').effect("highlight", {color: '#d9534f'}, 500);
 <% end %>
 
 $('#live-order-total').replaceWith('<%= j render('order_total') %>');
