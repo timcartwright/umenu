@@ -46,7 +46,7 @@
 }
 
 a {
-  &, &:hover, &:active, &:visited {
+  &, &:hover, &:active, &:visited, &:focus {
     text-decoration: none;
   }
 }
@@ -54,7 +54,7 @@ a {
 .remove {
   color: #d9534f;
 
-  &:hover, &:active {
+  &:hover, &:active, &:focus {
     color: #c9302c;
   }
 }

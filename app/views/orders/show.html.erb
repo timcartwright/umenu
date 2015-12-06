@@ -1,17 +1,13 @@
 <section id="orders">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <%= link_to "Mark as Fulfilled", restaurant_order_path(@restaurant, @order), method: :patch, class: "btn btn-danger pull-right" %>
       
       <h2>Order Details</h2>
       
-      <h4>
-        Order Total: <%= @order.total_price %>
-      </h4>
       <table class="table">
           <tr>
             <th>Item</th>
-            <th class="text-right">Price</th>
+            <th class="text-right">Rs</th>
             <th class="text-right">Quantity</th>
           </tr>
         <% @order.orderitems.each do |item| %>
@@ -21,7 +17,14 @@
             <td class="text-right"><%= item.quantity %></td>
           </tr>
         <% end %>
+        <tr>
+          <td><h4>Order Total</h4></td>
+          <td class="text-right"><h4><%= "#{@order.total_price}" %></h4></td>
+          
+          <td class="text-right"><%= link_to "Mark as Fulfilled", restaurant_order_path(@restaurant, @order), method: :patch, class: "btn btn-danger" %></td>
+        </tr>
       </table>
+      
     </div>
   </div>
 </section>

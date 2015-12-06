@@ -29,7 +29,7 @@
                   <td><%= f.input :price, label: false %></td>
                   <td><%= f.button :submit, "Update", class: "btn-sm" %></td>
                   <td>
-                    <%= link_to "x", order_items_path(item: item, restaurant: @restaurant), method: :delete, class: "btn-sm btn btn-danger" %>
+                    <%= link_to "x", restaurant_menu_item_path(@restaurant, item), method: :delete, class: "btn-sm btn btn-danger" %>
                   </td>
                 </tr>
               <% end %>

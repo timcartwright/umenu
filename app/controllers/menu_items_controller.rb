@@ -28,6 +28,12 @@ class MenuItemsController < ApplicationController
     redirect_to edit_restaurant_path(params[:restaurant_id])
   end
 
+  def destroy
+    item = MenuItem.find(params[:id])
+    item.destroy
+    redirect_to edit_restaurant_path(params[:restaurant_id])
+  end
+
 private
   def menu_item_params
     params.require(:menu_item).permit(:name, :description, :price)

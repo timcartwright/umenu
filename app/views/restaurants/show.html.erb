@@ -4,7 +4,7 @@
       <div class="well">
       
       <h2>
-        <%= @restaurant.name %>
+        Menu for <%= @restaurant.name %>
       </h2>
       
         <table class="table">
@@ -20,7 +20,7 @@
                 <td class="text-center"><%= "#{item.price}" %></td>
                 <% if current_user %>
                   <td class="text-center">
-                    <%= link_to '', order_items_path(item: item, restaurant: @restaurant), class: "fa fa-plus-circle", method: :post %>
+                    <%= link_to '', order_items_path(item: item, restaurant: @restaurant), class: "fa fa-plus-circle", method: :post, remote: true %>
                   </td>
                 <% end %>
               </tr>
@@ -46,14 +46,14 @@
                 <td><%= item.menu_item.name %></td>
                 <td class="text-center"><%= item.price %></td>
                 <td class="text-center"><%= item.quantity %></td>
-                <td class="text-center"><%= link_to '', order_item_path(item), class: "fa fa-minus-circle remove", method: :delete %></td>
+                <td class="text-center"><%= link_to '', order_item_path(item), class: "fa fa-minus-circle remove", method: :delete, remote: true %></td>
               </tr>
             <% end %>
                 <tr>
                   <td><h4>Order Total</h4></td>
                   <td class="text-right"><h4><%= "#{@order.total_price}" %></h4></td>
-                  <td class="text-right"><%= render "stripe" %></td>
                   <td></td>
+                  <td class="text-right"><%= render "stripe" %></td>
                 </tr>
           </table>
         </div>

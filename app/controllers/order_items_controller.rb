@@ -6,7 +6,7 @@ class OrderItemsController < ApplicationController
     item = MenuItem.find(params[:item])
     restaurant = Restaurant.find(params[:restaurant])
     current_user.add_to_order(item, restaurant)
-    redirect_to restaurant_path(restaurant)
+    redirect_to restaurant
   end
 
   def destroy
