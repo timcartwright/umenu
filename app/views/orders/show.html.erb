@@ -1,0 +1,27 @@
+<section id="orders">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= link_to "Mark as Fulfilled", restaurant_order_path(@restaurant, @order), method: :patch, class: "btn btn-danger pull-right" %>
+      
+      <h2>Order Details</h2>
+      
+      <h4>
+        Order Total: <%= @order.total_price %>
+      </h4>
+      <table class="table">
+          <tr>
+            <th>Item</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Quantity</th>
+          </tr>
+        <% @order.orderitems.each do |item| %>
+          <tr>
+            <td><%= item.menu_item.name %></td>
+            <td class="text-right"><%= item.price %></td>
+            <td class="text-right"><%= item.quantity %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</section>

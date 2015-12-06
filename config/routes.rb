@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :order_items
-  resources :orders
+  
   resources :charges
 
   
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     # resources :menu_categories do
     resources :menu_items
     resources :menu_categories
+    resources :orders
     # end
   end
   

@@ -1,0 +1,13 @@
+<tr>
+  <td><%= order.id %></td>
+  <td><%= order.updated_at.strftime("%l:%M %P %b %-d, %Y") %></td>
+  <td class="text-center">
+    <%= order.paid ? "Yes" : "No" %>
+  </td>
+  <td class="text-center">
+    <%= order.fulfilled ? "Yes" : "No" %>
+  </td>
+  <td>
+    <%= link_to "Details", restaurant_order_path(@restaurant,order) %>
+  </td>
+</tr>

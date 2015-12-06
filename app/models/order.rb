@@ -25,4 +25,8 @@ class Order < ActiveRecord::Base
     self.save
   end
   
+  def mark_as_fulfilled
+    self.fulfilled = Time.zone.now
+    self.save
+  end
 end
