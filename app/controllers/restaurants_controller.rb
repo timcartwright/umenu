@@ -11,8 +11,10 @@ class RestaurantsController < ApplicationController
     @menu_item = MenuItem.new
 
     # Order
-    @order = current_user.current_order(@restaurant)
-    @orderitems = @order.orderitems
+    if current_user
+      @order = current_user.current_order(@restaurant)
+      @orderitems = @order.orderitems
+    end
 
   end
 
