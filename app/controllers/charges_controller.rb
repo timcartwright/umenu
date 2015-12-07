@@ -28,7 +28,7 @@ class ChargesController < ApplicationController
     redirect_to restaurant_path(restaurant)
 
   rescue Stripe::CardError => e
-    flash[:error] = e.message
+    flash[:alert] = e.message
 
   end
 

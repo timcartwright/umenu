@@ -1,5 +1,7 @@
 class RestaurantsController < ApplicationController
 
+  before_action :auth, only: [:edit]
+
   def index
     @restaurants = Restaurant.all
   end
@@ -20,17 +22,27 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    # Menu
     @restaurant = Restaurant.find(params[:id])
+ 
+    # Menu
     @menucategories = @restaurant.menucategories.all
     @menu_item = MenuItem.new
 
     # Category
     @category = MenuCategory.new
     
+    
   end
 
 private
 
+  def auth
+    @restaurant = Restaurant.find(params[:id])
+    if !Manager.where(user_id: current_user.id).where(restaurant_id: @restaurant.id).any?
+      flash[:alert] = 'You are not authoroised to manage this restaurant'
+      redirect_to @restaurant
+    end
+    
+  end
   
 end
