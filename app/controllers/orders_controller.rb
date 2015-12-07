@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @orders = @restaurant.orders.where(fulfilled: nil)
+    @orders = @restaurant.orders.where(fulfilled: nil).where('total_price > ?', 0)
   end
 
   def show

@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
   
   def create
+
     
     amount = params[:order][:total_price].to_i * 100
 

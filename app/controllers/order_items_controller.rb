@@ -15,6 +15,7 @@ class OrderItemsController < ApplicationController
   def destroy
     
     @order_item = OrderItem.find(params[:id])
+    @order = @order_item.order
     amount = @order_item.price
     if @order_item.quantity == 1
       @order_item.destroy

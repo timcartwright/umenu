@@ -11,3 +11,4 @@ if ( $('#order-teaser').length ) {
 };
 
 $('#live-order-total').replaceWith('<%= j render('order_total') %>');
+$('.stripe-button').data('amount', '<%= @total_price %>');

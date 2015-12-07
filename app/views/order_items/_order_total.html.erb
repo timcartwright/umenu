@@ -1,1 +1,5 @@
-<td colspan="2" id="live-order-total"><h4><%= "Rs. #{@total_price}" %></h4></td>
+<tr id="live-order-total">
+  <td class="wide-column"><h4>Order Total</h4></td>
+  <td colspan="2"><h4><%= "Rs. #{@total_price}" %></h4></td>
+  <td class="text-right"><%= render 'restaurants/stripe' %></td>
+</tr>

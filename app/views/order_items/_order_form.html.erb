@@ -2,11 +2,9 @@
   <h2>Your Order</h2>
               
   <table id="live-order" class="table">
-      <tr>
-        <td class="wide-column"><h4>Order Total</h4></td>
+      
         <%= render 'order_items/order_total' %>
-        <td class="text-right"><%= render 'restaurants/stripe' %></td>
-      </tr>
+        
       <tr>
         <th>Item</th>
         <th class="text-center slim-column">Rs.</th>
